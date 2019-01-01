@@ -1,0 +1,26 @@
+version: '3'
+services:
+  php:
+    build:
+     context: .
+     dockerfile: "./docker/php-cli/Dockerfile"
+    tty: true
+    volumes:
+      - ./:/app/
+    depends_on:
+      - maria_db
+  maria_db:
+    build:
+      context: .
+      dockerfile: "./docker/mariadb/Dockerfile"
+    environment:
+      - "MYSQL_ROOT_PASSWORD=test"
+      - "TZ=Asia/Tokyo"
+    restart: always
+    volumes:
+      - maria_db:/var/lib/mysql
+    ports:
+      - 4417:3306
+
+volumes:
+  maria_db:

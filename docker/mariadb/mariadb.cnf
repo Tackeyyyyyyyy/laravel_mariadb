@@ -1,0 +1,11 @@
+
+[client]
+port            = 3306
+socket          = /var/lib/mysql/mysql.sock
+
+[mysqld]
+port            = 3306
+socket          = /var/lib/mysql/mysql.sock
+
+character-set-server = utf8
+skip-character-set-client-handshake
